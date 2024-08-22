@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test</title>
+        <!--link rel="stylesheet" href="https://classless.de/classless.css"-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    </head>
+    <body>
+    <form action="test.php" method="post">
+        <label for="fname">Enter your first name:</label>
+        <input type="text" id="fname" name="fname" required><br>
+        <label for="lname">Enter your last name:</label>
+        <input type="text" id="lname" name="lname" required><br>
+        <label for="job">Job position:</label>
+        <input type="button" id="job" value="Choose your job position" onclick="document.getElementById('dlg').showModal();"><br>
+        <input type="hidden" id="frt" name="frt" required>
+        <input type="submit">
+        <table>
+            <tr>
+                <th>Hello</th>
+                <th>World</th>
+                <th>Nice</th>
+            </tr>
+            <tr>
+                <td>This</td>
+                <td>Is</td>
+                <td>Test</td>
+            </tr>
+            <tr>
+                <td>This</td>
+                <td>Is</td>
+                <td>Test</td>
+            </tr>
+        </table>
+    </form>
+    
+    <dialog id="dlg">
+        <form method="dialog">
+            
+            <header>
+                <h3>Choose your job position:</h3>
+            </header>
+
+            <article>
+                <select name='fruit' id="fruit">
+                    <option disabled value='' selected></option>
+                    <option value='Doctor'>Doctor</option>
+                    <option value='Nurse'>Nurse</option>
+                    <option value='Technician'>Technician</option>
+                </select>
+            </article>
+
+            <footer>
+                <button type="submit" value="Cancel">Cancel</button>
+                <button autofocus type="reset">Reset</button>
+                <button type="submit" value="confirm">Confirm</button>                
+            </footer>
+        </form>
+    </dialog>
+
+    <script>
+        document.getElementById('dlg').onclose = function(){
+            if (document.getElementById('dlg').returnValue == "confirm"){
+                document.getElementById('frt').value = document.getElementById('fruit').value;
+                if (document.getElementById('fruit').value != "") {
+                    document.getElementById('job').value = document.getElementById('fruit').value;
+                } else {
+                    document.getElementById('job').value = "Choose your job position";
+                }
+            }
+        }
+    </script>
+    </body>
+</html>
